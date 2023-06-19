@@ -220,7 +220,10 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "有什么可以帮你的吗",
+    BotHello: `欢迎使用尘歌的AIGC Web服务，点击左下角[设置](/#/settings)按钮输入密码后解锁使用。
+    支持Midjourney文生图，对话框输入 /mj + 绘图指令即可，
+    【例】/mj 一个可爱的小女孩
+    有任何疑问欢迎随时沟通 [即刻](https://okjk.co/85sHkr)`,
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
