@@ -7,8 +7,8 @@ import { getBuildConfig } from "./config/build";
 const buildConfig = getBuildConfig();
 
 export const metadata = {
-  title: "尘世の歌|AIGC",
-  description: "尘世の歌的ChatGPT+Midjourney聊天机器人应用.",
+  title: "尘世の歌🌸AIGC",
+  description: "尘世の歌的ChatGPT+Midjourney聊天机器人应用。",
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -19,7 +19,7 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#151515" },
   ],
   appleWebApp: {
-    title: "尘世の歌|AIGC",
+    title: "尘世の歌🌸AIGC",
     statusBarStyle: "default",
   },
 };
