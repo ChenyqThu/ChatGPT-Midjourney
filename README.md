@@ -6,13 +6,6 @@
 
 一键免费部署你的私人 ChatGPT+Midjourney 网页应用（基于[ChatGPT-Next-Web](https://github.com/Yidadaa/ChatGPT-Next-Web)开发）
 
-[QQ交流群](https://github.com/Licoy/ChatGPT-Midjourney/issues/30) | [赞助项目](https://licoy.cn/open-sponsor.html) | [PRO版本](https://github.com/Licoy/ChatGPT-Midjourney-Pro)
-
-[![Deploy with Vercel](https://img.shields.io/badge/Vercel-部署-00CCCC.svg?logo=vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLicoy%2FChatGPT-Midjourney&env=OPENAI_API_KEY&env=MIDJOURNEY_PROXY_URL&env=CODE&project-name=chatgpt-midjourney&repository-name=ChatGPT-Midjourney)
-[![Deploy with Railway](https://img.shields.io/badge/MidjourneyProxy-Railway部署-009900.svg?logo=railway)](https://github.com/novicezk/midjourney-proxy/blob/main/docs/railway-start.md)
-
-[![WordPress+ChatGPT支持](https://img.shields.io/badge/WordPress-ChatGPT%20部署-red.svg?logo=wordpress&logoColor=red&style=for-the-badge)](https://github.com/Licoy/wordpress-theme-puock)
-
 ![主界面](./docs/images/cover.png)
 
 </div>
@@ -26,6 +19,7 @@
 - [x] midjourney `blend` 混图
 - [x] midjourney 垫图
 - [x] 绘图进度百分比、实时图像显示
+- [x] 多API Key支持，用英文逗号隔开
 - [ ] 自身支持midjourney-api
 
 ## 参数说明
@@ -49,14 +43,14 @@ MIDJOURNEY_PROXY_URL=http://yourip:port
 #### Docker
 ```shell
 docker run -d -p 3000:3000 \
-   -e OPENAI_API_KEY="sk-xxx" \
+   -e OPENAI_API_KEY="sk-xxx,sk-yyy" \
    -e CODE="123456" \
    -e BASE_URL="https://api.openai.com" \
    -e MIDJOURNEY_PROXY_URL="http://ip:port" \
-   licoy/chatgpt-midjourney:v1.3.9
+   chenyqthu/aigc:v1.4
 ```
 #### Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLicoy%2FChatGPT-Midjourney&env=OPENAI_API_KEY&env=MIDJOURNEY_PROXY_URL&env=CODE&project-name=chatgpt-midjourney&repository-name=ChatGPT-Midjourney)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchenyqthu%2FChatGPT-Midjourney&env=OPENAI_API_KEY&env=MIDJOURNEY_PROXY_URL&env=CODE&project-name=chatgpt-midjourney&repository-name=ChatGPT-Midjourney)
 #### Zeabur
 > - 新注册的 Github 账号可立即使用 Zeabur
 > - Zeabur 服务器运行在国外，其生成的域名 *.zeabur.app 国内可直接访问
