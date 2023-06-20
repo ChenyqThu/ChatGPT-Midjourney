@@ -462,15 +462,31 @@
   }
 }
 
-.chat-message-action-btn{
-  font-size: 12px;
-  background-color: var(--white);
-  color: var(--black);
-
+.chat-message-action-v-btn{
+  font-size: 14px;
+  background-color: #3883f4b8;//var(--white);
+  color: var(--white);
+  width: 50px;
   border: var(--border-in-light);
   box-shadow: var(--card-shadow);
   padding: 8px 16px;
-  border-radius: 16px;
+  border-radius: 6px;
+
+  animation: slide-in-from-top ease 0.3s;
+  transition: all .3s;
+  cursor: pointer;
+  margin: 2px 2px;
+}
+
+.chat-message-action-u-btn{
+  font-size: 14px;
+  background-color: #11d1c1e7;//var(--white);
+  color: var(--white);
+  width: 50px;
+  border: var(--border-in-light);
+  box-shadow: var(--card-shadow);
+  padding: 8px 16px;
+  border-radius: 6px;
 
   animation: slide-in-from-top ease 0.3s;
   transition: all .3s;

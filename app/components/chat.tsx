@@ -336,21 +336,21 @@ export function ChatActions(props: {
         document.getElementById("chat-image-file-select-upload")?.click();
     }
 
-    const onImageSelected = (e: any) => {
-        console.log(e)
-        const file = e.target.files[0];
-        const filename = file.name;
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            const base64 = reader.result;
-            props.imageSelected({
-                filename,
-                base64,
-            });
-        };
-        e.target.value = null;
+  const onImageSelected = (e: any) => {
+    console.log(e);
+    const file = e.target.files[0];
+    const filename = file.name;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64 = reader.result;
+      props.imageSelected({
+        filename,
+        base64,
+      });
     };
+    e.target.value = null;
+  };
 
     return (
         <div className={chatStyle["chat-input-actions"]}>
@@ -878,133 +878,134 @@ export function Chat() {
                                                     </>
                                                 )}
 
-                                                <div
-                                                    className={styles["chat-message-top-action"]}
-                                                    onClick={() => copyToClipboard(message.content)}
-                                                >
-                                                    {Locale.Chat.Actions.Copy}
-                                                </div>
-                                            </div>
-                                        )}
-                                        <Markdown
-                                            content={message.content}
-                                            loading={
-                                                (message.preview || message.content.length === 0) &&
-                                                !isUser
-                                            }
-                                            onContextMenu={(e) => onRightClick(e, message)}
-                                            onDoubleClickCapture={() => {
-                                                if (!isMobileScreen) return;
-                                                setUserInput(message.content);
-                                            }}
-                                            fontSize={fontSize}
-                                            parentRef={scrollRef}
-                                            defaultShow={i >= messages.length - 10}
-                                        />
-                                    </div>
-                                    {!isUser &&
-                                        message.model == "midjourney" &&
-                                        message.attr?.finished &&
-                                        ["VARIATION", "IMAGINE", "BLEND"].includes(message.attr?.action) && (
-                                            <div
-                                                className={[
-                                                    styles["chat-message-actions"],
-                                                    styles["column-flex"],
-                                                ].join(" ")}
-                                            >
-                                                <div>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(`/mj UPSCALE::1::${message.attr.taskId}`)
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        U1
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(`/mj UPSCALE::2::${message.attr.taskId}`)
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        U2
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(`/mj UPSCALE::3::${message.attr.taskId}`)
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        U3
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(`/mj UPSCALE::4::${message.attr.taskId}`)
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        U4
-                                                    </button>
-                                                    {/*<button onClick={() => doSubmit(`/mj REROLL::0::${message.attr.taskId}`)} className={`${styles["chat-message-action-btn"]} clickable`}>RESET</button>*/}
-                                                </div>
-                                                <div>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(
-                                                                `/mj VARIATION::1::${message.attr.taskId}`,
-                                                            )
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        V1
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(
-                                                                `/mj VARIATION::2::${message.attr.taskId}`,
-                                                            )
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        V2
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(
-                                                                `/mj VARIATION::3::${message.attr.taskId}`,
-                                                            )
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        V3
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            doSubmit(
-                                                                `/mj VARIATION::4::${message.attr.taskId}`,
-                                                            )
-                                                        }
-                                                        className={`${styles["chat-message-action-btn"]} clickable`}
-                                                    >
-                                                        V4
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
-                                    {!isUser && !message.preview && (
-                                        <div className={styles["chat-message-actions"]}>
-                                            <div className={styles["chat-message-action-date"]}>
-                                                {message.date.toLocaleString()}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            {shouldShowClearContextDivider && <ClearContextDivider/>}
-                        </>
-                    );
-                })}
-            </div>
+                        <div
+                          className={styles["chat-message-top-action"]}
+                          onClick={() => copyToClipboard(message.content)}
+                        >
+                          {Locale.Chat.Actions.Copy}
+                        </div>
+                      </div>
+                    )}
+                    <Markdown
+                      content={message.content}
+                      loading={
+                        (message.preview || message.content.length === 0) &&
+                        !isUser
+                      }
+                      onContextMenu={(e) => onRightClick(e, message)}
+                      onDoubleClickCapture={() => {
+                        if (!isMobileScreen) return;
+                        setUserInput(message.content);
+                      }}
+                      fontSize={fontSize}
+                      parentRef={scrollRef}
+                      defaultShow={i >= messages.length - 10}
+                    />
+                  </div>
+                  {!isUser &&
+                    message.model == "midjourney" &&
+                    message.attr?.finished &&
+                    ["VARIATION", "IMAGINE"].includes(message.attr?.action) && (
+                      <div
+                        className={[
+                          styles["chat-message-actions"],
+                          styles["column-flex"],
+                        ].join(" ")}
+                      >
+                        <div>
+                          <button
+                            onClick={() =>
+                              doSubmit(`#mj UPSCALE::1::${message.attr.taskId}`)
+                            }
+                            className={`${styles["chat-message-action-u-btn"]} clickable`}
+                          >
+                            U1
+                          </button>
+                          <button
+                            onClick={() =>
+                              doSubmit(`#mj UPSCALE::2::${message.attr.taskId}`)
+                            }
+                            className={`${styles["chat-message-action-u-btn"]} clickable`}
+                          >
+                            U2
+                          </button>
+                          <button
+                            onClick={() =>
+                              doSubmit(
+                                `#mj VARIATION::1::${message.attr.taskId}`,
+                              )
+                            }
+                            className={`${styles["chat-message-action-v-btn"]} clickable`}
+                          >
+                            V1
+                          </button>
+                          <button
+                            onClick={() =>
+                              doSubmit(
+                                `#mj VARIATION::2::${message.attr.taskId}`,
+                              )
+                            }
+                            className={`${styles["chat-message-action-v-btn"]} clickable`}
+                          >
+                            V2
+                          </button>
+                          {/*<button onClick={() => doSubmit(`/mj REROLL::0::${message.attr.taskId}`)} className={`${styles["chat-message-action-btn"]} clickable`}>RESET</button>*/}
+                        </div>
+                        <div>
+                          <button
+                            onClick={() =>
+                              doSubmit(`#mj UPSCALE::3::${message.attr.taskId}`)
+                            }
+                            className={`${styles["chat-message-action-u-btn"]} clickable`}
+                          >
+                            U3
+                          </button>
+                          <button
+                            onClick={() =>
+                              doSubmit(`#mj UPSCALE::4::${message.attr.taskId}`)
+                            }
+                            className={`${styles["chat-message-action-u-btn"]} clickable`}
+                          >
+                            U4
+                          </button>
+
+                          <button
+                            onClick={() =>
+                              doSubmit(
+                                `#mj VARIATION::3::${message.attr.taskId}`,
+                              )
+                            }
+                            className={`${styles["chat-message-action-v-btn"]} clickable`}
+                          >
+                            V3
+                          </button>
+                          <button
+                            onClick={() =>
+                              doSubmit(
+                                `#mj VARIATION::4::${message.attr.taskId}`,
+                              )
+                            }
+                            className={`${styles["chat-message-action-v-btn"]} clickable`}
+                          >
+                            V4
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  {!isUser && !message.preview && (
+                    <div className={styles["chat-message-actions"]}>
+                      <div className={styles["chat-message-action-date"]}>
+                        {message.date.toLocaleString()}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              {shouldShowClearContextDivider && <ClearContextDivider />}
+            </>
+          );
+        })}
+      </div>
 
             <div className={styles["chat-input-panel"]}>
                 <PromptHints prompts={promptHints} onPromptSelect={onPromptSelect}/>
