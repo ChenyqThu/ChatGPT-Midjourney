@@ -8,11 +8,14 @@
   --white: white;
   --black: rgb(48, 48, 48);
   --gray: rgb(250, 250, 250);
-  --primary: rgb(169, 109, 216);
-  --second: rgb(245, 235, 252);
+  --primary: #1d93ab;
+  --second: #e7f8ff;
   --hover-color: #f3f3f3;
   --bar-color: rgba(0, 0, 0, 0.1);
   --theme-color: var(--gray);
+  --sidebar-bg: linear-gradient(-225deg, #e3fdf5 0, #ffe6fa 100%);
+  --u-btn: linear-gradient(143deg, #8baeff 0, #ffcff5 100%);
+  --v-btn: linear-gradient(42deg, #96fadc 0, #f7b8ce 100%);
 
   /* shadow */
   --shadow: 50px 50px 100px 10px rgb(0, 0, 0, 0.1);
@@ -27,11 +30,14 @@
 
   /* color */
   --white: rgb(30, 30, 30);
-  --black: rgb(187, 187, 187);
+  --black: rgb(215, 215, 215);
   --gray: rgb(21, 21, 21);
-  --primary: rgb(169, 109, 216);
-  --second: rgb(50, 44, 55);
+  --primary: #1d93ab;
+  --second: #1b262a;//rgb(50, 44, 55);
   --hover-color: #323232;
+  --sidebar-bg: linear-gradient(-225deg, #06412f 0, #3d0430 100%);
+  --u-btn: linear-gradient(143deg, #bfd2ff 0, #f5c4eb 100%);
+  --v-btn: linear-gradient(42deg, #c1efe1 0, #e8cce2 100%);
 
   --bar-color: rgba(255, 255, 255, 0.1);
 

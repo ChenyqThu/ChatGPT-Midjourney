@@ -42,8 +42,7 @@
   width: var(--sidebar-width);
   box-sizing: border-box;
   padding: 20px;
-  //background-color: var(--second);
-  background: linear-gradient(-225deg, #e3fdf5 0, #ffe6fa 100%);
+  background: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
   box-shadow: inset -2px 0px 2px 0px rgb(0, 0, 0, 0.05);
@@ -468,7 +467,7 @@
   font-style: italic;
   font-weight: bold;
   //background-color: #aeedd9;//var(--white);
-  background: linear-gradient(42deg, #82fed8 0, #f7b8eb 100%);
+  background: var(--v-btn);
   color: var(--white);
   width: 50px;
   border: 1px solid #ffffff;//var(--border-in-light);
@@ -487,7 +486,7 @@
   font-style: italic;
   font-weight: bold;
   //background-color: #f7c9ee;//var(--white);
-  background: linear-gradient(143deg, #8baeff 0, #ffcff5 100%);
+  background: var(--u-btn);
   color: var(--white);
   width: 50px;
   border: 1px solid #ffffff;//var(--border-in-light);
