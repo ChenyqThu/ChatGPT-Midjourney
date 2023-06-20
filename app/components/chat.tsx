@@ -15,6 +15,7 @@ import MinIcon from "../icons/min.svg";
 import ResetIcon from "../icons/reload.svg";
 import BreakIcon from "../icons/break.svg";
 import SettingsIcon from "../icons/chat-settings.svg";
+//import MjIcon from "../icons/midjourney.png";
 
 import LightIcon from "../icons/light.svg";
 import DarkIcon from "../icons/dark.svg";
@@ -823,60 +824,78 @@ export function Chat() {
 
                     const shouldShowClearContextDivider = i === clearContextIndex - 1;
 
-                    return (
-                        <>
+          return (
+            <>
+              <div
+                key={i}
+                className={
+                  isUser
+                    ? styles["chat-message-user"]
+                    : [
+                        styles["chat-message"],
+                        message.model == "midjourney"
+                          ? styles["chat-model-mj"]
+                          : "",
+                      ].join(" ")
+                }
+              >
+                <div className={styles["chat-message-avatar"]}>
+                  {message.role === "user" ? (
+                    <Avatar avatar={config.avatar} />
+                  ) : message.model === "midjourney" ? (
+                    <div className="user-avatar">
+                      <img
+                        src="https://cdn.discordapp.com/icons/662267976984297473/39128f6c9fc33f4c95a27d4c601ad7db.webp?size=48"
+                        className="user-avatar"
+                      />
+                    </div>
+                  ) : (
+                    <MaskAvatar mask={session.mask} />
+                  )}
+                </div>
+                <div className={styles["chat-message-container"]}>
+                  {!isUser && !message.preview && (
+                    <div className={styles["chat-message-actions"]}>
+                      <div className={styles["chat-message-action-modelname"]}>
+                        {message.model}
+                      </div>
+                      <div className={styles["chat-message-action-date"]}>
+                        {message.date.toLocaleString()}
+                      </div>
+                    </div>
+                  )}
+                  {showTyping && (
+                    <div className={styles["chat-message-status"]}>
+                      {Locale.Chat.Typing}
+                    </div>
+                  )}
+
+                  <div className={styles["chat-message-item"]}>
+                    {showActions && (
+                      <div className={styles["chat-message-top-actions"]}>
+                        {message.streaming ? (
+                          <div
+                            className={styles["chat-message-top-action"]}
+                            onClick={() => onUserStop(message.id ?? i)}
+                          >
+                            {Locale.Chat.Actions.Stop}
+                          </div>
+                        ) : (
+                          <>
                             <div
-                                key={i}
-                                className={
-                                    isUser
-                                        ? styles["chat-message-user"]
-                                        : [
-                                            styles["chat-message"],
-                                            message.model == "midjourney"
-                                                ? styles["chat-model-mj"]
-                                                : "",
-                                        ].join(" ")
-                                }
+                              className={styles["chat-message-top-action"]}
+                              onClick={() => onDelete(message.id ?? i)}
                             >
-                                <div className={styles["chat-message-container"]}>
-                                    <div className={styles["chat-message-avatar"]}>
-                                        {message.role === "user" ? (
-                                            <Avatar avatar={config.avatar}/>
-                                        ) : (
-                                            <MaskAvatar mask={session.mask}/>
-                                        )}
-                                    </div>
-                                    {showTyping && (
-                                        <div className={styles["chat-message-status"]}>
-                                            {Locale.Chat.Typing}
-                                        </div>
-                                    )}
-                                    <div className={styles["chat-message-item"]}>
-                                        {showActions && (
-                                            <div className={styles["chat-message-top-actions"]}>
-                                                {message.streaming ? (
-                                                    <div
-                                                        className={styles["chat-message-top-action"]}
-                                                        onClick={() => onUserStop(message.id ?? i)}
-                                                    >
-                                                        {Locale.Chat.Actions.Stop}
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <div
-                                                            className={styles["chat-message-top-action"]}
-                                                            onClick={() => onDelete(message.id ?? i)}
-                                                        >
-                                                            {Locale.Chat.Actions.Delete}
-                                                        </div>
-                                                        <div
-                                                            className={styles["chat-message-top-action"]}
-                                                            onClick={() => onResend(message.id ?? i)}
-                                                        >
-                                                            {Locale.Chat.Actions.Retry}
-                                                        </div>
-                                                    </>
-                                                )}
+                              {Locale.Chat.Actions.Delete}
+                            </div>
+                            <div
+                              className={styles["chat-message-top-action"]}
+                              onClick={() => onResend(message.id ?? i)}
+                            >
+                              {Locale.Chat.Actions.Retry}
+                            </div>
+                          </>
+                        )}
 
                         <div
                           className={styles["chat-message-top-action"]}
@@ -992,13 +1011,6 @@ export function Chat() {
                         </div>
                       </div>
                     )}
-                  {!isUser && !message.preview && (
-                    <div className={styles["chat-message-actions"]}>
-                      <div className={styles["chat-message-action-date"]}>
-                        {message.date.toLocaleString()}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
               {shouldShowClearContextDivider && <ClearContextDivider />}
