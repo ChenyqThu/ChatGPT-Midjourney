@@ -855,12 +855,9 @@ export function Chat() {
                 </div>
                 <div className={styles["chat-message-container"]}>
                   {!isUser && !message.preview && (
-                    <div className={styles["chat-message-actions"]}>
+                    <div className={styles["chat-message-name"]}>
                       <div className={styles["chat-message-action-modelname"]}>
                         {message.model}
-                      </div>
-                      <div className={styles["chat-message-action-date"]}>
-                        {message.date.toLocaleString()}
                       </div>
                     </div>
                   )}
@@ -1011,6 +1008,13 @@ export function Chat() {
                         </div>
                       </div>
                     )}
+                  {!isUser && !message.preview && (
+                    <div className={styles["chat-message-actions"]}>
+                      <div className={styles["chat-message-action-date"]}>
+                        {message.date.toLocaleString()}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               {shouldShowClearContextDivider && <ClearContextDivider />}
