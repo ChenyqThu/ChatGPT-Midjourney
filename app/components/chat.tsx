@@ -685,35 +685,35 @@ export function Chat() {
             ? session.clearContextIndex! + context.length
             : -1;
 
-    // preview messages
-    const messages = context
-        .concat(session.messages as RenderMessage[])
-        .concat(
-            isLoading
-                ? [
-                    {
-                        ...createMessage({
-                            role: "assistant",
-                            content: "……",
-                        }),
-                        preview: true,
-                    },
-                ]
-                : [],
-        )
-        .concat(
-            userInput.length > 0 && config.sendPreviewBubble
-                ? [
-                    {
-                        ...createMessage({
-                            role: "user",
-                            content: userInput,
-                        }),
-                        preview: true,
-                    },
-                ]
-                : [],
-        );
+  // preview messages
+  const messages = context
+    .concat(session.messages as RenderMessage[])
+    // .concat(
+    //   isLoading
+    //     ? [
+    //         {
+    //           ...createMessage({
+    //             role: "assistant",
+    //             content: "……",
+    //           }),
+    //           preview: true,
+    //         },
+    //       ]
+    //     : [],
+    // )
+    .concat(
+      userInput.length > 0 && config.sendPreviewBubble
+        ? [
+            {
+              ...createMessage({
+                role: "user",
+                content: userInput,
+              }),
+              preview: true,
+            },
+          ]
+        : [],
+    );
 
     const [showPromptModal, setShowPromptModal] = useState(false);
 
@@ -857,15 +857,21 @@ export function Chat() {
                   {!isUser && !message.preview && (
                     <div className={styles["chat-message-name"]}>
                       <div className={styles["chat-message-action-modelname"]}>
-                        {message.model}
+                        {message.model?.startsWith("gpt-3.5")
+                          ? "GPT3.5"
+                          : message.model?.startsWith("gpt-4")
+                          ? "GPT4"
+                          : message.model?.startsWith("midj")
+                          ? "Midjourney"
+                          : message.model}
                       </div>
                     </div>
                   )}
-                  {showTyping && (
+                  {/* {showTyping && (
                     <div className={styles["chat-message-status"]}>
                       {Locale.Chat.Typing}
                     </div>
-                  )}
+                  )} */}
 
                   <div className={styles["chat-message-item"]}>
                     {showActions && (
@@ -921,7 +927,9 @@ export function Chat() {
                   {!isUser &&
                     message.model == "midjourney" &&
                     message.attr?.finished &&
-                    ["VARIATION", "IMAGINE"].includes(message.attr?.action) && (
+                    ["VARIATION", "IMAGINE", "BLEND"].includes(
+                      message.attr?.action,
+                    ) && (
                       <div
                         className={[
                           styles["chat-message-actions"],

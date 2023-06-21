@@ -5,7 +5,8 @@ const cn = {
   Error: {
     Unauthorized: `欢迎使用尘歌的AIGC Web服务，开始使用前，请前往[登录](/#/auth)页或点击左下角[设置](/#/settings)按钮输入正确的访问密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。
       该站点支持Midjourney文生图，对话框输入 #mj 或 #画图 + 指令即可，
-      【例】#mj 一个可爱的小女孩 或 #画图 一个可爱的小女孩
+      【例1】#mj 一个可爱的小女孩
+      【例2】#画图 一个可爱的小女孩
       有任何疑问欢迎随时沟通 [即刻](https://okjk.co/85sHkr)`,
   },
   Auth: {

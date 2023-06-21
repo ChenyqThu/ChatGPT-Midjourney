@@ -396,7 +396,7 @@
 .chat-message-item {
   box-sizing: border-box;
   max-width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 10px;
@@ -445,7 +445,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding-top: 5px;
+  padding-top: 8px;
   box-sizing: border-box;
   font-size: 12px;
   justify-content: space-between;
@@ -477,6 +477,7 @@
   color: #aaa;
   display: flex;
   flex-direction: row-reverse;
+  margin-right: 3px;
 }
 
 .chat-message-action-modelname {
