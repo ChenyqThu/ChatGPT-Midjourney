@@ -845,7 +845,7 @@ export function Chat() {
                   ) : message.model === "midjourney" ? (
                     <div className="user-avatar">
                       <img
-                        src="https://cdn.discordapp.com/icons/662267976984297473/39128f6c9fc33f4c95a27d4c601ad7db.webp?size=48"
+                        src="https://mj.chenge.ink/mj.webp"
                         className="user-avatar"
                       />
                     </div>

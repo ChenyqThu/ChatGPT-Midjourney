@@ -366,6 +366,8 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 
   &:hover {
     .chat-message-top-actions {
@@ -382,8 +384,8 @@
 
 .chat-message-avatar {
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left:10px;
+  //margin-right: 10px;
+  //margin-left:10px;
 }
 
 .chat-message-status {
@@ -396,7 +398,7 @@
 .chat-message-item {
   box-sizing: border-box;
   max-width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 10px;
@@ -445,7 +447,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding-top: 8px;
+  padding-top: 4px;
   box-sizing: border-box;
   font-size: 12px;
   justify-content: space-between;
